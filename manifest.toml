@@ -47,7 +47,8 @@ ram.runtime = "50M"
     [resources.sources.main]
     url = "https://github.com/sabre-io/Baikal/releases/download/0.12.1/baikal-0.12.1.zip"
     sha256 = "0449abb72b151d39d9c08c63cb83a05d9e9adb065b1165ef6786b0b6a13d203c"
-    #autoupdate.strategy = "latest_github_release"
+    autoupdate.strategy = "latest_github_release"
+    autoupdate.asset = "^baikal-.*\\.zip$"
 
     [resources.system_user]
 
