@@ -68,6 +68,17 @@ chown $app:$app "$install_dir/config/baikal.yaml"
 touch "$install_dir/Specific/INSTALL_DISABLED"
 
 #=================================================
+# FINAL INSTALL
+#=================================================
+ynh_script_progression "Install $app"
+
+pushd $install_dir
+    sudo -u $app php$php_version composer.phar install --no-dev --optimize-autoloader
+popd
+
+chown -R $app:www-data $install_dir
+
+#=================================================
 # END OF SCRIPT
 #=================================================
 

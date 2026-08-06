@@ -34,8 +34,19 @@ ynh_script_progression "Upgrading the configuration file..."
 path=${path%/}
 ynh_config_add --template="baikal.yaml" --destination="$install_dir/config/baikal.yaml"
 
-chmod 640 "$install_dir/config/baikal.yaml"
-chown $app:$app "$install_dir/config/baikal.yaml"
+#chmod 640 "$install_dir/config/baikal.yaml"
+#chown $app:$app "$install_dir/config/baikal.yaml"
+
+#=================================================
+# FINAL INSTALL
+#=================================================
+ynh_script_progression "Install $app"
+
+pushd $install_dir
+	sudo -u $app php$php_version composer.phar install --no-dev --optimize-autoloader
+popd
+
+chown -R $app:www-data $install_dir
 
 #=================================================
 # END OF SCRIPT
