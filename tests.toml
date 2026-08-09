@@ -9,3 +9,4 @@ test_format = 1.0
     # -------------------------------
 
     test_upgrade_from.330692e457ef2b475046d1724d3f198f007d5512.name = "Upgrade from 0.9.3~ynh1"
+    test_upgrade_from.56b4324.name = "Upgrade from 0.11.1~ynh1"

@@ -33,6 +33,14 @@ ynh_script_progression "Setting up source files..."
 ynh_setup_source --dest_dir="$install_dir"
 _fix_ldap
 
+pushd "$install_dir/html/res/core/JQuery"
+    ynh_exec_as_app curl -o jquery-4.0.0.min.js https://code.jquery.com/jquery-4.0.0.min.js
+    ynh_exec_as_app curl -o jquery.color-3.0.0.min.js https://code.jquery.com/color/jquery.color-3.0.0.min.js
+popd
+
+chown "$app:www-data" $install_dir/html/res/core/JQuery/*
+chmod o-r $install_dir/html/res/core/JQuery/*
+
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
